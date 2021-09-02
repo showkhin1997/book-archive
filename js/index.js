@@ -8,7 +8,7 @@ const searchBook = () => {
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => displaySearchResult(data.docs));
+        .then(data => displaySearchResult(data));
 }
 
 // display search result
@@ -17,10 +17,11 @@ const displaySearchResult = books => {
 
     // total search result
     const totalSearch = document.getElementById('total-search');
-    let totalSearchResult = books.length;
+    let totalSearchResult = books.numFound;
     totalSearch.innerText = totalSearchResult;
-    books = books.slice(0, 30);
+    books = books.docs.slice(0, 30);
 
+    // display search result
     const displaySearchResult = document.getElementById('display-search-result');
     let displayTotalSResult = books.length;
     displaySearchResult.innerText = displayTotalSResult;
@@ -38,6 +39,17 @@ const displaySearchResult = books => {
         const imageUrl = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
         const div = document.createElement('div');
         div.classList.add('col');
+        if (!book.publish_year) {
+            book.publish_year = '';
+        }
+        if (!book.author_name) {
+            book.author_name = '';
+        }
+        if (!book.publisher) {
+            book.publisher = '';
+        }
+
+        // book.publish_year ? console.log(book.publish_year) :
         div.innerHTML = `
         <div class="card  w-75 container border-1">
             <img src="${imageUrl}" class="card-img-top p-4 mx-auto" alt="...">
