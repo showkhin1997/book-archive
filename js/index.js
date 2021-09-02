@@ -1,3 +1,4 @@
+// search button
 const searchBook = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
@@ -10,7 +11,7 @@ const searchBook = () => {
         .then(data => displaySearchResult(data.docs));
 }
 
-
+// display search result
 const displaySearchResult = books => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
@@ -26,8 +27,8 @@ const displaySearchResult = books => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
-        <div class="card">
-            <img src="${imageUrl}" class="card-img-top" alt="...">
+        <div class="card  w-75 container border-1">
+            <img src="${imageUrl}" class="card-img-top p-4 mx-auto" alt="...">
             <div class="card-body">
                <h1 class="card-title">${book.title}</h1>
                <h6 class="card-title">Author: ${book.author_name}</h6>
