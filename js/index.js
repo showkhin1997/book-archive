@@ -49,7 +49,6 @@ const displaySearchResult = books => {
             book.publisher = '';
         }
 
-        // book.publish_year ? console.log(book.publish_year) :
         div.innerHTML = `
         <div class="card  w-75 container border-1">
             <img src="${imageUrl}" class="card-img-top p-4 mx-auto" alt="...">
