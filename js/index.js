@@ -17,9 +17,13 @@ const displaySearchResult = books => {
 
     // total search result
     const totalSearch = document.getElementById('total-search');
-    let totalSearchResult = parseInt(totalSearch.innerText) + books.length;
+    let totalSearchResult = books.length;
     totalSearch.innerText = totalSearchResult;
-    console.log(totalSearchResult);
+    books = books.slice(0, 30);
+
+    const displaySearchResult = document.getElementById('display-search-result');
+    let displayTotalSResult = books.length;
+    displaySearchResult.innerText = displayTotalSResult;
 
     //checking invalid search input
     searchResult.textContent = '';
