@@ -14,6 +14,14 @@ const searchBook = () => {
 // display search result
 const displaySearchResult = books => {
     const searchResult = document.getElementById('search-result');
+
+    // total search result
+    const totalSearch = document.getElementById('total-search');
+    let totalSearchResult = parseInt(totalSearch.innerText) + books.length;
+    totalSearch.innerText = totalSearchResult;
+    console.log(totalSearchResult);
+
+    //checking invalid search input
     searchResult.textContent = '';
     if (books.length === 0) {
         searchResult.innerHTML = `
@@ -33,10 +41,11 @@ const displaySearchResult = books => {
                <h1 class="card-title">${book.title}</h1>
                <h6 class="card-title">Author: ${book.author_name}</h6>
                <p class="card-title">Publisher: ${book.publisher}</p>
-               <p class="card-text">First Publish date: ${book.publish_date}</p>
+               <p class="card-text">Publish Year: ${book.publish_year}</p>
             </div>
         </div>
         `;
         searchResult.appendChild(div);
     });
 }
+
